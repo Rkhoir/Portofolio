@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <title>Nurul Inayah</title>
+  <style>
+    :root{
+      --bg: black;
+      --primary: #FF00FF;
+      --sekunder: #00FFFF;
+      --third : #1F51FF;
+      --border : 2px solid #FF00FF ;
+      --radius : 7px;
+      --radius-2: 15px;
+      --container : 80%;
+      
+    }
+    *{
+      box-sizing: border-box ;
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background: var(--bg);
+      min-height: 100vh;
+      font-family: poppins, sans-serif;
+    }
+    nav{
+      padding: 32px;
+      display: flex ;
+      justify-content: space-between ;
+      background: rgba(255,255,255,0.05);
+      z-index : 99 ;
+    }
+   .logo{
+     color: white;
+     position: relative;
+     top: 3px;
+   }
+  .logo span{
+    color: var(--primary);
+  }
+  nav button{
+    border: none;
+    background: none ;
+    color: var(--primary);
+    font-size : 28px;
+  }
+ .container {
+   max-width: 100%;
+   display: block ;
+   margin: 0 auto ;
+   padding: 30px;
+   position : relative;
+   overflow: hidden ;
+   
+ }
+ .profil {
+   width: 100%;
+   height: auto;
+   opacity: 0;
+   transform: translateX(100px);
+   animation: smoothReveal2 ease-out 1.2s forwards;
+   
+ }
+.profil-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  text-align : left ;
+  
+}
+  
+.name {
+  font-size: 36px;
+  background: linear-gradient(to right, var(--primary), var(--sekunder), var(--third));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: translateY(100px);
+  animation: smoothReveal 1.2s ease-out forwards, gradientMove 3s ease infinite ;
+  animation-delay: 1.2s;
+  background-size: 200% 200%;
+}
+  @keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes smoothReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothReveal2{
+  to{
+    opacity : 1 ;
+    transform: translateX(0);
+  }
+}
+
+.profil-text h2,.profil-text h3{
+  color: white ;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0;
+  transform: translateY(100px);
+  animation: smoothReveal 1.2s ease-out forwards;
+  animation-delay: 1.2s;
+  line-height: 1.5 ;
+}
+.call{
+  text-decoration : none ;
+  background: rgba(255,255,255,0.05);
+  border : var(--border);
+  border-radius : var(--radius);
+  padding: 10px 15px ;
+  margin : 10px auto;
+  display: block ;
+  width: 150px;
+  font-weight: bold ;
+  color: var(--primary);
+  transition: all 0.5s ease ;
+  position :relative ;
+  animation: smoothReveal 1.2s ease-out forwards;
+  animation-delay: 1.2s;
+  right : 7px;
+  transform: translateY(200px);
+}
+.call:hover{
+  color: white;
+  background : var(--primary);
+  outline: none ;
+  box-shadow: 0 0 20px var(--primary);
+}
+
+.hidnav{
+  width: 100%;
+  transform: translateY(-100vh);
+  height: 30vh;
+  overflow: hidden ;
+  position : absolute ;
+  transition: all 1s ease-out;
+  transition-duration: 1.3s ;
+  opacity : 0 ;
+}
+.hidnav ul{
+  list-style-type: none;
+}
+.hidnav ul li{
+  display : block ;
+  width: 100%;
+  background: black;
+  padding: 10px 15px ;
+  border-bottom : 1px solid white ;
+}
+.hidnav ul li:hover{
+  background: white ;
+}
+.hidnav ul li a{
+  color: var(--primary);
+  text-decoration: none ;
+  width: 100%;
+  text-align : center ;
+  display: block ;
+  height: 100%;
+  pointer-events: none;
+}
+.show{
+  transform: translateY(0);
+  opacity : 1 ;
+  z-index: 99 ;
+}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h2 class="logo">Nurul <span>Inayah</span></h2>
+    <button onclick="navbar()">
+      <i class="fa fa-bars"></i></button>
+  </nav>
+  
+  <div class="hidnav" id="hidnav">
+    <ul>
+      <li><a href="">About me</a></li>
+      <li><a href="">Education</a></li>
+      <li><a href="">Portofolio</a></li>
+      <li><a href="">Contact</a></li>
+      
+    </ul>
+  </div>
+  
+  <!--Isi konten-->
+  <div class="container">
+    <img class="profil" src="Inayah2.jpg" alt="" />
+    <div class="profil-text">
+      <h2>Hello there!</h2>
+      <h1 class="name">
+        I'm Nurul Inayah
+        </h1>
+      <h3>a student, a business women and an anime lover. Interested talking with me? </h3>
+      <a href="https://wa.me/6282160537136" class="call">Call me here</a>
+    </div>
+    
+  </div>
+  
+  
+</body>
+<script src="FontAwsome/all.js"></script>
+<script>
+  function navbar(){
+    const nav = document.getElementById('hidnav');
+    nav.classList.toggle('show');
+  }
+</script>
+</html>
